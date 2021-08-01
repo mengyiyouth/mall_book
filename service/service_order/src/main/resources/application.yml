@@ -1,0 +1,39 @@
+server:
+  port: 8007
+spring:
+  application:
+    name: service-order
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/book_store?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: mengyiyouth
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#    password: 20200718
+    database: 1
+    timeout: 180000
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#logging:
+#  level:
+#    root: INFO
+#配置mapper xml文件的路径
+mybatis-plus:
+  mapper-locations: classpath:com/mengyi/mapper/xml/*.xml
+#开启熔断机制
+#feign:
+#  hystrix:
+#    enabled: true

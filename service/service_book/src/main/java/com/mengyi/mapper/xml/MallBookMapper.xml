@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengyi.mapper.MallBookMapper">
+
+    <select id="getBaseBookInfo" resultType="com.mengyi.entity.frontvo.BookWebVo">
+        select mb.id, mb.classify_id as classifyId, mb.classify_parent_id as classifyParentId, mb.title, mb.price, mb.author, mb.cover, mbd.description,
+            mb.buy_count as buyCount, mb.reverse, bc1.title as  classifyLevelOne, bc2.title as  classifyLevelTwo
+        from mall_book mb
+        left outer join mall_book_description mbd on mb.id = mbd.id
+        left outer join book_classify bc1 on bc1.id = mb.classify_parent_id
+        left outer join book_classify bc2 on bc2.id = mb.classify_id
+        where mb.id = #{bookId}
+    </select>
+</mapper>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengyi.mapper.TOrderMapper">
+
+    <select id="getSaleSta" resultType="java.lang.Integer">
+        SELECT count(*) FROM t_order where DATE(t_order.gmt_create) = #{day}
+    </select>
+</mapper>
